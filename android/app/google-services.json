@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "695376160254",
+    "project_id": "fitracker-3413d",
+    "storage_bucket": "fitracker-3413d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695376160254:android:66fe7fcba2b1b3baba0caf",
+        "android_client_info": {
+          "package_name": "com.rhyton.fitracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695376160254-aanbdoq65oefip6s6cteafq2f8a6sjb8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0LDd5QxVZSV59lEPtz62kXVWnX6hNTAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695376160254-aanbdoq65oefip6s6cteafq2f8a6sjb8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
