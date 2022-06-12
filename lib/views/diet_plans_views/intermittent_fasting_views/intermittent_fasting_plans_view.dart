@@ -1,13 +1,14 @@
 import 'package:fitness_app/managers/color_manager.dart';
 import 'package:fitness_app/managers/strings_manager.dart';
 import 'package:fitness_app/managers/theme_manager.dart';
+import 'package:fitness_app/widgets/intermittent_fasting_text_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../managers/assets_manager.dart';
 import '../../../managers/routes_manager.dart';
 import '../../../managers/values_manager.dart';
 
-class IntermitttentFastingDefinitionView extends StatelessWidget {
-  const IntermitttentFastingDefinitionView({Key? key}) : super(key: key);
+class IntermitttentFastingPlansView extends StatelessWidget {
+  const IntermitttentFastingPlansView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,16 @@ class IntermitttentFastingDefinitionView extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(),
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  color: ColorManager.primary,
+                ),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(
+                      context, Routes.intermittentFasting);
+                },
+              ),
               IconButton(
                 icon: Icon(
                   Icons.arrow_forward_ios,
@@ -29,7 +39,7 @@ class IntermitttentFastingDefinitionView extends StatelessWidget {
                 ),
                 onPressed: () {
                   Navigator.pushReplacementNamed(
-                      context, Routes.intermittentFastingPlans);
+                      context, Routes.intermittentFastingSelectPlan);
                 },
               )
             ],
@@ -66,72 +76,52 @@ class IntermitttentFastingDefinitionView extends StatelessWidget {
                 children: [
                   SizedBox(
                     child: Text(
-                      AppStrings.whatIsIt,
+                      AppStrings.methods,
                       style: getApplicationTheme()
                           .textTheme
                           .headline3!
                           .copyWith(color: ColorManager.primary),
                     ),
                   ),
-                  const SizedBox(
-                    height: AppSize.s20,
+                  IntermittentFastingTextWidget(
+                    text: AppStrings.timeRestrictedEating,
+                    isTitle: true,
                   ),
-                  SizedBox(
-                    child: Text(
-                      AppStrings.definitionOfIntermittentFasting,
-                      style: getApplicationTheme()
-                          .textTheme
-                          .caption!
-                          .copyWith(color: ColorManager.white),
-                    ),
+                  IntermittentFastingTextWidget(
+                    text: AppStrings.timeRestrictedEatingDescription,
+                    isTitle: false,
                   ),
-                  const SizedBox(
-                    height: AppSize.s20,
+                  IntermittentFastingTextWidget(
+                    text: AppStrings.fiveTwoMethod,
+                    isTitle: true,
                   ),
-                  SizedBox(
-                    child: Text(
-                      AppStrings.howDoesItWork,
-                      style: getApplicationTheme()
-                          .textTheme
-                          .headline3!
-                          .copyWith(color: ColorManager.primary),
-                    ),
+                  IntermittentFastingTextWidget(
+                    text: AppStrings.fiveTwoMethodDescription,
+                    isTitle: false,
                   ),
-                  const SizedBox(
-                    height: AppSize.s20,
+                  IntermittentFastingTextWidget(
+                    text: AppStrings.eatStopEatMethod,
+                    isTitle: true,
                   ),
-                  SizedBox(
-                    child: Text(
-                      AppStrings.howDoesIntermittentFastingWorks,
-                      style: getApplicationTheme()
-                          .textTheme
-                          .caption!
-                          .copyWith(color: ColorManager.white),
-                    ),
+                  IntermittentFastingTextWidget(
+                    text: AppStrings.eatStopEatMethodDescription,
+                    isTitle: false,
                   ),
-                  const SizedBox(
-                    height: AppSize.s20,
+                  IntermittentFastingTextWidget(
+                    text: AppStrings.alternateDayFasting,
+                    isTitle: true,
                   ),
-                  SizedBox(
-                    child: Text(
-                      AppStrings.whatAreTheBenefits,
-                      style: getApplicationTheme()
-                          .textTheme
-                          .headline3!
-                          .copyWith(color: ColorManager.primary),
-                    ),
+                  IntermittentFastingTextWidget(
+                    text: AppStrings.alternateDayFastingDescription,
+                    isTitle: false,
                   ),
-                  const SizedBox(
-                    height: AppSize.s20,
+                  IntermittentFastingTextWidget(
+                    text: AppStrings.warriorsDiet,
+                    isTitle: true,
                   ),
-                  SizedBox(
-                    child: Text(
-                      AppStrings.benefitsOfIntermittentFasting,
-                      style: getApplicationTheme()
-                          .textTheme
-                          .caption!
-                          .copyWith(color: ColorManager.white),
-                    ),
+                  IntermittentFastingTextWidget(
+                    text: AppStrings.warriorsDietDescription,
+                    isTitle: false,
                   ),
                 ],
               ),

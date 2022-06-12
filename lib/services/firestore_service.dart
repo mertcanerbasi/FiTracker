@@ -21,6 +21,7 @@ class FireStoreService {
       "weight": 0,
       "height": 0,
       "paidMember": false,
+      "selectedDiet": "",
     });
   }
 
@@ -149,6 +150,15 @@ class FireStoreService {
   }) {
     _firebaseFirestore.collection("users").doc(userId).update({
       "paidMember": paidMember,
+    });
+  }
+
+  updateSelectedDiet(
+    String? userId, {
+    String? selectedDiet,
+  }) {
+    _firebaseFirestore.collection("users").doc(userId).update({
+      "selectedDiet": selectedDiet,
     });
   }
 

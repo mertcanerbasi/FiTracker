@@ -11,17 +11,15 @@ class ImageAssets {
   static const String fitness = "$IMAGE_PATH/fitness.jpg";
   static const String cycling = "$IMAGE_PATH/cycling.jpg";
   static const String intermittentFasting = "$IMAGE_PATH/intermittent.jpg";
+  static const String timeRestricted = "$IMAGE_PATH/time_restricted.jpg";
+  static const String fiveTwoDiet = "$IMAGE_PATH/fivetwodiet.jpg";
+  static const String eatStopEatDiet = "$IMAGE_PATH/eatstopeat.jpeg";
+  static const String alternateFastingDiet = "$IMAGE_PATH/alternatefasting.jpg";
+  static const String warriorDiet = "$IMAGE_PATH/warriordiet.jpg";
   static const String mediterrianDiet = "$IMAGE_PATH/mediterrian.jpg";
   static const String ketogenicDiet = "$IMAGE_PATH/ketogenic.jpg";
   static const String veganismDiet = "$IMAGE_PATH/veganism.jpg";
   static const String carnivoreDiet = "$IMAGE_PATH/carnivore.jpg";
   static const String paleoDiet = "$IMAGE_PATH/paleo.jpg";
   static const String dietsBackground = "$IMAGE_PATH/diets_bg.jpg";
-}
-
-class JsonAssets {
-  static const String loading = "$JSON_PATH/loading.json";
-  static const String error = "$JSON_PATH/error.json";
-  static const String empty = "$JSON_PATH/empty.json";
-  static const String success = "$JSON_PATH/success.json";
 }

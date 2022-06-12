@@ -15,6 +15,7 @@ class AppUsers {
   final int? weight;
   final int? height;
   final bool? paidMember;
+  final String? selectedDiet;
 
   AppUsers(
       {this.id,
@@ -29,7 +30,8 @@ class AppUsers {
       this.age,
       this.weight,
       this.height,
-      this.paidMember});
+      this.paidMember,
+      this.selectedDiet});
 
   factory AppUsers.fromFirebase(User user) {
     return AppUsers(
@@ -55,6 +57,7 @@ class AppUsers {
       weight: doc['weight'],
       height: doc['height'],
       paidMember: doc['paidMember'],
+      selectedDiet: doc['selectedDiet'],
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:fitness_app/views/create_plan_views/create_plan_first_view.dart';
 import 'package:fitness_app/views/diet_plans_views/carnivore_diet_view.dart';
 import 'package:fitness_app/views/diet_plans_views/intermittent_fasting_views/intermittent_fasting_definition_view.dart';
+import 'package:fitness_app/views/diet_plans_views/intermittent_fasting_views/intermittent_fasting_plans_view.dart';
 import 'package:fitness_app/views/diet_plans_views/ketogenic_diet_view.dart';
 import 'package:fitness_app/views/diet_plans_views/mediterrian_diet_view.dart';
 import 'package:fitness_app/views/diet_plans_views/paleo_diet_view.dart';
@@ -17,6 +18,7 @@ import '../views/create_plan_views/create_plan_fifth_view.dart';
 import '../views/create_plan_views/create_plan_fourth.dart';
 import '../views/create_plan_views/create_plan_second_view.dart';
 import '../views/create_plan_views/create_plan_third_view.dart';
+import '../views/diet_plans_views/intermittent_fasting_views/intermittent_fasting_select_plan_view.dart';
 import '../views/forgot_password_view.dart';
 import '../views/login_view.dart';
 import '../views/onboarding_view.dart';
@@ -41,6 +43,9 @@ class Routes {
   static const String cycling = "/cycling";
   static const String profileSettings = "/profileSettings";
   static const String intermittentFasting = "/intermittentFasting";
+  static const String intermittentFastingPlans = "/intermittentFastingPlans";
+  static const String intermittentFastingSelectPlan =
+      "/intermittentFastingSelectPlan";
   static const String mediterrianDiet = "/mediterrianDiet";
   static const String ketogenicDiet = "/ketogenicDiet";
   static const String veganDiet = "/veganDiet";
@@ -86,6 +91,12 @@ class RouteGenerator {
       case Routes.intermittentFasting:
         return MaterialPageRoute(
             builder: (_) => const IntermitttentFastingDefinitionView());
+      case Routes.intermittentFastingPlans:
+        return MaterialPageRoute(
+            builder: (_) => const IntermitttentFastingPlansView());
+      case Routes.intermittentFastingSelectPlan:
+        return MaterialPageRoute(
+            builder: (_) => const IntermitttentFastingSelectPlanView());
       case Routes.mediterrianDiet:
         return MaterialPageRoute(builder: (_) => const MediterrianDietView());
       case Routes.ketogenicDiet:
