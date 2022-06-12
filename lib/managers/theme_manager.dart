@@ -25,6 +25,7 @@ ThemeData getApplicationTheme() {
           centerTitle: true,
           color: ColorManager.primary,
           elevation: AppSize.s4,
+          iconTheme: IconThemeData(color: ColorManager.primary),
           shadowColor: ColorManager.primaryOpacity70,
           titleTextStyle: getRegularStyle(
               color: ColorManager.white, fontSize: FontSize.s16)),

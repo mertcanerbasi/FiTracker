@@ -32,4 +32,13 @@ class AppStrings {
   static const String workoutDays =
       "How many days a week would you like to work out?";
   static const String createPlan = "Create Plan";
+  static const String personalInfo = "Personal Info";
+  static const String progress = "Progress";
+  static const String settings = "Settings";
+  static const String whatIsIt = "What is it?";
+  static const String howDoesItWork = "How does it work?";
+  static const String definitionOfIntermittentFasting =
+      "Many diets focus on what to eat, but intermittent fasting is all about when you eat.\n\nWith intermittent fasting, you only eat during a specific time. Fasting for a certain number of hours each day or eating just one meal a couple days a week, can help your body burn fat. And scientific evidence points to some health benefits, as well.";
+  static const String howDoesIntermittentFastingWorks =
+      "There are several different ways to do intermittent fasting, but they are all based on choosing regular time periods to eat and fast.\n\nFor instance, you might try eating only during an eight-hour period each day and fast for the remainder. Or you might choose to eat only one meal a day two days a week. There are many different intermittent fasting schedules.";
 }

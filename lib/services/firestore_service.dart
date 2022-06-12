@@ -62,6 +62,15 @@ class FireStoreService {
     });
   }
 
+  updatePhoto(
+    String? userId, {
+    String? photoUrl,
+  }) {
+    _firebaseFirestore.collection("users").doc(userId).update({
+      "photoUrl": photoUrl,
+    });
+  }
+
   updateProgramCreated(
     String? userId, {
     bool? programCreated,

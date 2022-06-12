@@ -1,5 +1,16 @@
 import 'package:fitness_app/views/create_plan_views/create_plan_first_view.dart';
+import 'package:fitness_app/views/diet_plans_views/carnivore_diet_view.dart';
+import 'package:fitness_app/views/diet_plans_views/intermittent_fasting_views/intermittent_fasting_definition_view.dart';
+import 'package:fitness_app/views/diet_plans_views/ketogenic_diet_view.dart';
+import 'package:fitness_app/views/diet_plans_views/mediterrian_diet_view.dart';
+import 'package:fitness_app/views/diet_plans_views/paleo_diet_view.dart';
+import 'package:fitness_app/views/diet_plans_views/vegan_diet_view.dart';
+import 'package:fitness_app/views/exercises_views/cycling_view.dart';
+import 'package:fitness_app/views/exercises_views/fitness_view.dart';
+import 'package:fitness_app/views/exercises_views/running_view.dart';
+import 'package:fitness_app/views/exercises_views/swimming_view.dart';
 import 'package:fitness_app/views/navigation_view.dart';
+import 'package:fitness_app/views/profile_views/profile_settings_view.dart';
 import 'package:flutter/material.dart';
 
 import '../views/create_plan_views/create_plan_fifth_view.dart';
@@ -24,6 +35,17 @@ class Routes {
   static const String createPlanFourth = "/createPlanFourth";
   static const String createPlanFifth = "/createPlanFifth";
   static const String navigation = "/navigation";
+  static const String swimming = "/swimming";
+  static const String running = "/running";
+  static const String fitness = "/fitness";
+  static const String cycling = "/cycling";
+  static const String profileSettings = "/profileSettings";
+  static const String intermittentFasting = "/intermittentFasting";
+  static const String mediterrianDiet = "/mediterrianDiet";
+  static const String ketogenicDiet = "/ketogenicDiet";
+  static const String veganDiet = "/veganDiet";
+  static const String carnivoreDiet = "/carnivoreDiet";
+  static const String paleoDiet = "/paleoDiet";
 }
 
 class RouteGenerator {
@@ -51,6 +73,29 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const CreatePlanFourthView());
       case Routes.createPlanFifth:
         return MaterialPageRoute(builder: (_) => const CreatePlanFifthView());
+      case Routes.swimming:
+        return MaterialPageRoute(builder: (_) => const SwimmingView());
+      case Routes.running:
+        return MaterialPageRoute(builder: (_) => const RunningView());
+      case Routes.fitness:
+        return MaterialPageRoute(builder: (_) => const FitnessView());
+      case Routes.cycling:
+        return MaterialPageRoute(builder: (_) => const CyclingView());
+      case Routes.profileSettings:
+        return MaterialPageRoute(builder: (_) => const ProfileSettingsView());
+      case Routes.intermittentFasting:
+        return MaterialPageRoute(
+            builder: (_) => const IntermitttentFastingDefinitionView());
+      case Routes.mediterrianDiet:
+        return MaterialPageRoute(builder: (_) => const MediterrianDietView());
+      case Routes.ketogenicDiet:
+        return MaterialPageRoute(builder: (_) => const KetogenicDietView());
+      case Routes.veganDiet:
+        return MaterialPageRoute(builder: (_) => const VeganDietView());
+      case Routes.carnivoreDiet:
+        return MaterialPageRoute(builder: (_) => const CarnivoreDietView());
+      case Routes.paleoDiet:
+        return MaterialPageRoute(builder: (_) => const PaleoDietView());
       default:
         return unDefinedRoute();
     }

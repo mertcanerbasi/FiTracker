@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:fitness_app/services/firestore_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +16,7 @@ class CreatePlanFourthView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _authService = Provider.of<AuthService>(context, listen: false);
+    final authService = Provider.of<AuthService>(context, listen: false);
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -69,7 +71,7 @@ class CreatePlanFourthView extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () async {
                               await FireStoreService().updateworkoutDays(
-                                  _authService.activeUserId,
+                                  authService.activeUserId,
                                   workoutDays: 3);
                               Navigator.pushNamed(
                                   context, Routes.createPlanFifth);
@@ -90,7 +92,7 @@ class CreatePlanFourthView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 1,
                         ),
                         Expanded(
@@ -98,7 +100,7 @@ class CreatePlanFourthView extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () async {
                               await FireStoreService().updateworkoutDays(
-                                  _authService.activeUserId,
+                                  authService.activeUserId,
                                   workoutDays: 4);
                               Navigator.pushNamed(
                                   context, Routes.createPlanFifth);
@@ -119,7 +121,7 @@ class CreatePlanFourthView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 1,
                         ),
                       ],

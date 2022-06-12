@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:fitness_app/services/firestore_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +16,7 @@ class CreatePlanFirstView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _authService = Provider.of<AuthService>(context, listen: false);
+    final authService = Provider.of<AuthService>(context, listen: false);
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -67,7 +69,7 @@ class CreatePlanFirstView extends StatelessWidget {
                         GestureDetector(
                           onTap: () async {
                             await FireStoreService().updateGender(
-                                _authService.activeUserId,
+                                authService.activeUserId,
                                 gender: "Male");
                             Navigator.pushNamed(
                                 context, Routes.createPlanSecond);
@@ -89,8 +91,10 @@ class CreatePlanFirstView extends StatelessWidget {
                         GestureDetector(
                           onTap: () async {
                             await FireStoreService().updateGender(
-                                _authService.activeUserId,
+                                authService.activeUserId,
                                 gender: "Female");
+                            Navigator.pushNamed(
+                                context, Routes.createPlanSecond);
                           },
                           child: Container(
                             alignment: Alignment.topLeft,

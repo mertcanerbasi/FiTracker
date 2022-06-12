@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fitness_app/managers/color_manager.dart';
 import 'package:fitness_app/managers/font_manager.dart';
 import 'package:fitness_app/managers/strings_manager.dart';
@@ -28,7 +31,7 @@ class _LoginViewState extends State<LoginView> {
   bool _passVisible = false;
   @override
   Widget build(BuildContext context) {
-    final _authService = Provider.of<AuthService>(context, listen: false);
+    final authService = Provider.of<AuthService>(context, listen: false);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: ColorManager.white,
@@ -79,7 +82,7 @@ class _LoginViewState extends State<LoginView> {
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                         labelText: AppStrings.password,
-                        prefixIcon: Icon(Icons.lock),
+                        prefixIcon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
@@ -111,10 +114,17 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   const SizedBox(height: 40),
                   GestureDetector(
-                    onTap: () {
+                    onTap: () async {
                       if (_formKey.currentState!.validate()) {
-                        _authService.loginWithMail(
-                            _emailController.text, _passwordController.text);
+                        try {
+                          await authService.loginWithMail(
+                              _emailController.text, _passwordController.text);
+                        } on FirebaseException catch (error) {
+                          var errorMessage = _showError(errorCode: error.code);
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(errorMessage),
+                              duration: const Duration(seconds: 1)));
+                        }
                       }
                     },
                     child: CommonButton(
@@ -149,9 +159,11 @@ class _LoginViewState extends State<LoginView> {
                   SignInButton(
                     Buttons.Google,
                     onPressed: () async {
-                      AppUsers? user = await _authService.loginWithGoogle();
-                      if (FireStoreService().searchUser(user!.id) == null) {
-                        FireStoreService()
+                      AppUsers? user = await authService.loginWithGoogle();
+                      AppUsers? registeredUser =
+                          await FireStoreService().searchUser(user!.id);
+                      if (registeredUser == null) {
+                        await FireStoreService()
                             .createUser(user.id, user.email, user.userName);
                       }
                     },
@@ -181,5 +193,17 @@ class _LoginViewState extends State<LoginView> {
         ),
       ),
     );
+  }
+
+  _showError({required errorCode}) {
+    String errorMessage = '';
+    if (errorCode == 'invalid-email') {
+      errorMessage = 'Invalid Mail';
+    } else if (errorCode == 'wrong-password*') {
+      errorMessage = 'Wrong Password';
+    } else if (errorCode == 'too-many-requests') {
+      errorMessage = 'You sent too many requests';
+    }
+    return errorMessage;
   }
 }

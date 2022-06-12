@@ -1,14 +1,11 @@
 import 'package:fitness_app/managers/assets_manager.dart';
 import 'package:fitness_app/managers/color_manager.dart';
 import 'package:fitness_app/managers/strings_manager.dart';
-import 'package:fitness_app/managers/theme_manager.dart';
 import 'package:fitness_app/models/users.dart';
 import 'package:fitness_app/services/auth.dart';
-import 'package:fitness_app/views/create_plan_views/create_plan_second_view.dart';
 import 'package:fitness_app/views/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../managers/routes_manager.dart';
 import '../managers/values_manager.dart';
 
@@ -25,7 +22,7 @@ class NavigationView extends StatelessWidget {
           if (snapshot.hasData) {
             authService.activeUser = snapshot.data as AppUsers;
             if (authService.activeUser?.programCreated == true) {
-              return OnBoardingView();
+              return const OnBoardingView();
             } else {
               return Scaffold(
                   extendBodyBehindAppBar: true,

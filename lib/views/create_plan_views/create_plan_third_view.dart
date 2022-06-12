@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:fitness_app/services/firestore_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +16,7 @@ class CreatePlanThirdView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _authService = Provider.of<AuthService>(context, listen: false);
+    final authService = Provider.of<AuthService>(context, listen: false);
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -69,7 +71,7 @@ class CreatePlanThirdView extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () async {
                               await FireStoreService().updateObjective(
-                                  _authService.activeUserId,
+                                  authService.activeUserId,
                                   objective: AppStrings.getBackInShape);
                               Navigator.pushNamed(
                                   context, Routes.createPlanFourth);
@@ -90,7 +92,7 @@ class CreatePlanThirdView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 1,
                         ),
                         Expanded(
@@ -98,7 +100,7 @@ class CreatePlanThirdView extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () async {
                               await FireStoreService().updateObjective(
-                                  _authService.activeUserId,
+                                  authService.activeUserId,
                                   objective: AppStrings.loseWeight);
                               Navigator.pushNamed(
                                   context, Routes.createPlanFourth);
@@ -119,7 +121,7 @@ class CreatePlanThirdView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 1,
                         ),
                         Expanded(
@@ -127,7 +129,7 @@ class CreatePlanThirdView extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () async {
                               await FireStoreService().updateObjective(
-                                  _authService.activeUserId,
+                                  authService.activeUserId,
                                   objective: AppStrings.buildGreatBody);
                               Navigator.pushNamed(
                                   context, Routes.createPlanFourth);
@@ -148,7 +150,7 @@ class CreatePlanThirdView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 1,
                         ),
                         Expanded(
@@ -156,7 +158,7 @@ class CreatePlanThirdView extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () async {
                               await FireStoreService().updateObjective(
-                                  _authService.activeUserId,
+                                  authService.activeUserId,
                                   objective: AppStrings.bulkUp);
                               Navigator.pushNamed(
                                   context, Routes.createPlanFourth);

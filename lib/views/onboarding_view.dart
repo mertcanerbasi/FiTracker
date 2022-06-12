@@ -1,11 +1,12 @@
 import 'package:fitness_app/managers/color_manager.dart';
 import 'package:fitness_app/managers/theme_manager.dart';
 import 'package:fitness_app/managers/values_manager.dart';
-import 'package:fitness_app/views/exercises_view.dart';
-import 'package:fitness_app/views/profile_view.dart';
-import 'package:fitness_app/views/diet_plans_view.dart';
+import 'package:fitness_app/views/exercises_views/exercises_view.dart';
+import 'package:fitness_app/views/profile_views/profile_view.dart';
+import 'package:fitness_app/views/diet_plans_views/diet_plans_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../managers/routes_manager.dart';
 import '../services/auth.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -27,15 +28,14 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context, listen: false);
-    final List<Widget> _pages = [
-      ExercisesView(),
-      DietPlansView(),
-      ProfileView(),
+    final List<Widget> pages = [
+      const ExercisesView(),
+      const DietPlansView(),
+      const ProfileView(),
     ];
-    String dropdownValue = 'One';
     return Scaffold(
       appBar: AppBar(
-        title: Text('FiTracker'),
+        title: const Text('FiTracker'),
         actions: [
           Padding(
             padding: const EdgeInsets.all(AppPadding.p8),
@@ -49,18 +49,20 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               onChanged: (String? newValue) {
                 if (newValue == "Logout") {
                   authService.signOut();
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, Routes.splashRoute, (route) => true);
                 }
               },
               items: <String>['Settings', 'Logout']
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Container(
+                  child: SizedBox(
                     height: 20,
                     width: 70,
                     child: Text(
                       value,
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                     ),
                   ),
                 );
@@ -69,7 +71,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           )
         ],
       ),
-      body: _pages.elementAt(_selectedIndex),
+      body: pages.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:fitness_app/services/firestore_service.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -23,7 +25,7 @@ class _CreatePlanFifthViewState extends State<CreatePlanFifthView> {
   int _currentHeight = 170;
   @override
   Widget build(BuildContext context) {
-    final _authService = Provider.of<AuthService>(context, listen: false);
+    final authService = Provider.of<AuthService>(context, listen: false);
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -121,7 +123,7 @@ class _CreatePlanFifthViewState extends State<CreatePlanFifthView> {
                             ],
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 1,
                         ),
                         Expanded(
@@ -172,7 +174,7 @@ class _CreatePlanFifthViewState extends State<CreatePlanFifthView> {
                             ],
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 1,
                         ),
                         Expanded(
@@ -223,7 +225,7 @@ class _CreatePlanFifthViewState extends State<CreatePlanFifthView> {
                             ],
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 1,
                         ),
                       ],
@@ -237,17 +239,24 @@ class _CreatePlanFifthViewState extends State<CreatePlanFifthView> {
                     child: GestureDetector(
                       onTap: () async {
                         await FireStoreService().updateAge(
-                            _authService.activeUserId,
+                            authService.activeUserId,
                             age: _currentAge);
                         await FireStoreService().updateWeight(
-                            _authService.activeUserId,
+                            authService.activeUserId,
                             weight: _currentWeight);
                         await FireStoreService().updateHeight(
-                            _authService.activeUserId,
+                            authService.activeUserId,
                             height: _currentHeight);
                         await FireStoreService().updateProgramCreated(
-                            _authService.activeUserId,
+                            authService.activeUserId,
                             programCreated: true);
+                        await FireStoreService().updatePaidMmeber(
+                            authService.activeUserId,
+                            paidMember: false);
+                        await FireStoreService().updatePhoto(
+                            authService.activeUserId,
+                            photoUrl:
+                                "http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png");
                         Navigator.pushNamedAndRemoveUntil(context,
                             Routes.navigation, (Route<dynamic> route) => false);
                       },

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/managers/color_manager.dart';
 import 'package:fitness_app/models/users.dart';
@@ -84,7 +86,7 @@ class _RegisterViewState extends State<RegisterView> {
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                         labelText: AppStrings.password,
-                        prefixIcon: Icon(Icons.lock),
+                        prefixIcon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
@@ -180,15 +182,15 @@ class _RegisterViewState extends State<RegisterView> {
   }
 
   void _createAccount({required String provider}) async {
-    final _authService = Provider.of<AuthService>(context, listen: false);
+    final authService = Provider.of<AuthService>(context, listen: false);
 
     if (provider == "Mail") {
-      var _formState = _formKey.currentState;
-      if (_formState!.validate()) {
-        _formState.save();
+      var formState = _formKey.currentState;
+      if (formState!.validate()) {
+        formState.save();
 
         try {
-          AppUsers? user = await _authService.signupWithMail(
+          AppUsers? user = await authService.signupWithMail(
               _emailController.text, _passwordController.text);
           if (user != null) {
             FireStoreService().createUser(user.id, user.email, user.userName);
@@ -203,9 +205,10 @@ class _RegisterViewState extends State<RegisterView> {
         }
       }
     } else if (provider == "Google") {
-      AppUsers? user = await _authService.loginWithGoogle();
-      if (FireStoreService().searchUser(user!.id) == null) {
-        FireStoreService().createUser(user.id, user.email, user.userName);
+      AppUsers? user = await authService.loginWithGoogle();
+      AppUsers? registeredUser = await FireStoreService().searchUser(user!.id);
+      if (registeredUser == null) {
+        await FireStoreService().createUser(user.id, user.email, user.userName);
       }
 
       Navigator.pop(context);
