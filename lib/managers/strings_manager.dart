@@ -64,4 +64,15 @@ class AppStrings {
       "The Warrior Diet was among the first popular diets to include a form of intermittent fasting. It involves eating small amounts of raw fruits and vegetables during the day and eating one large meal at night.";
   static const String selectIntermittentFastingPlan =
       "Select an intermittent fasting plan";
+  static const String goodMorning = "Good Morning, Fitgetteer!";
+  static const String goodAfternoon = "Good Afternoon, Fitgetteer!";
+  static const String goodEvening = "Good Evening, Fitgetteer!";
+  static const String youAreOn168Plan = "You are on the 16:8 plan";
+  static const String fastPlan = "Fast Plan";
+  static const String nextFast = "Next Fast";
+  static const String startFasting = "Start Fasting";
+  static const String mySchedule = "My Schedule";
+  static const String sevenDaysAWeek = "7 days/week";
+  static const String waterReminder = "Water Reminder";
+  static const String enterYourWeightGoal = "Enter your weight goal";
 }

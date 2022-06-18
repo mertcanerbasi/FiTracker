@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  auto_size_text: ^3.0.0
   cloud_firestore: ^3.1.17
   cupertino_icons: ^1.0.2
   firebase_auth: ^3.3.19
@@ -36,6 +37,7 @@ dependencies:
   flutter_signin_button: ^2.0.0
   google_sign_in: ^5.3.3
   numberpicker: ^2.1.1
+  percent_indicator: ^4.2.2
   provider: ^6.0.3
 
 dev_dependencies:

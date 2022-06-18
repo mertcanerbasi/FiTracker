@@ -1,10 +1,10 @@
 import 'package:fitness_app/managers/color_manager.dart';
 import 'package:fitness_app/managers/routes_manager.dart';
 import 'package:fitness_app/managers/values_manager.dart';
+import 'package:fitness_app/views/diet_plans_views/intermittent_fasting_views/time_restricted_view/time_restricted_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../managers/assets_manager.dart';
-import '../../managers/theme_manager.dart';
 import '../../services/auth.dart';
 import '../../widgets/image_text_widget.dart';
 
@@ -87,19 +87,10 @@ class DietPlansView extends StatelessWidget {
               ),
             ),
           )
-        : Scaffold(
-            backgroundColor: ColorManager.white,
-            body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20),
-              child: Center(
-                child: Text(
-                  "You have selected ${authService.activeUser!.selectedDiet}",
-                  style: getApplicationTheme()
-                      .textTheme
-                      .headline3!
-                      .copyWith(color: ColorManager.primary),
-                ),
-              ),
-            ));
+        : authService.activeUser!.selectedDiet == "Time Restricted Diet"
+            ? const TimeRestrictedView()
+            : Scaffold(
+                backgroundColor: ColorManager.white,
+              );
   }
 }
